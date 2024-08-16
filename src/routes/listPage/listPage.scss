@@ -1,0 +1,71 @@
+@import "../../responsive.scss";
+
+.listPage {
+  display: flex;
+  height: 100%;
+  overflow-y: auto;
+
+  scrollbar-width: thin; /* Firefox: "auto" or "thin" */
+  scrollbar-color: #888 #eee; /* Firefox: color of thumb and track */
+
+  /* WebKit (Chrome, Safari) */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #eee;
+  }
+
+  .listContainer {
+    flex: 3;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+    overflow: visible; /* Remove internal scroll */
+    height: auto; /* Allow the height to be determined by content */
+
+    .wrapper {
+      height: 100%;
+      padding-right: 50px;
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+      overflow-y: scroll;
+      padding-bottom: 100px;
+
+      @include md {
+        overflow: hidden;
+      }
+    }
+  }
+  .mapContainer {
+    flex: 2;
+    height: 100%;
+    background-color: #fcf5f3;
+    margin-top: 20px;
+
+    @include md {
+      height: 300px; /* Set height for medium screens */
+      flex: none;
+      margin-top: 20px; /* Space between the list and the map */
+    }
+
+    @include sm {
+      height: 250px; /* Set height for small screens */
+      flex: none;
+      margin-top: 20px; /* Space between the list and the map */
+    }
+  }
+
+  @include md {
+    flex-direction: column; /* Ensure the list and map stack vertically */
+  }
+}
